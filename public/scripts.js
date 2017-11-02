@@ -66,7 +66,7 @@ const displayShoppingCart = (storedItems) => {
   });
 
   $('.shopping-price span').each((i, price) => total += JSON.parse($(price).text()));
-  $('.shopping-total').append(`Total: ${total}`)
+  $('.shopping-total').append(`Total: <span>${total}<span>`)
 }
 
 const displayOrder = () => {
@@ -95,7 +95,23 @@ const saveItem = e => {
   localStorage.setItem('shoppingItems', JSON.stringify(storedItems))
 }
 
+const postTotal = e => {
+  const total = $('.shopping-total span').text();
+  if (total !== '0') {
+    fetch('/api/v1/order_history', {
+      method: 'POST',
+      body: JSON.stringify({['total_price']: total}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(order => (cartClick(), localStorage.clear()))
+  }
+}
+
 $(document).ready(fetchInventory);
 $('.cart').click(cartClick);
 $('.order-history').click(orderClick);
-$('.inventory').click('button', saveItem)
+$('.inventory').on('click', 'button', saveItem)
+$(document).on('click', '.purchase', postTotal)
