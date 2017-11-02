@@ -20,6 +20,7 @@ const fetchInventory = () => {
   fetch('/api/v1/inventory')
     .then(response => response.json())
     .then(inventory => appendInventory(inventory))
+    .catch(error => console.log({ error }))
 }
 
 const cartClick = () => {
@@ -71,15 +72,34 @@ const displayShoppingCart = (storedItems) => {
 
 const displayOrder = () => {
   $('.inventory').css('display', 'none')
-  appendOrder();
+  fetchOrder()
 }
 
-const appendOrder = () => {
+const fetchOrder = () => {
+  fetch('/api/v1/order_history')
+    .then(response => response.json())
+    .then(orderHistory => appendOrder(orderHistory))
+    .catch(error => console.log({ error }))
+}
+
+const appendOrder = (orderHistory) => {
   $('.order-history').before(`
     <section class="append-display">
-      <p>Order Display</p>
+      <section class="order-display">
+      <h2>Order History</h2>
+      </section>
     </section>
-    `)
+  `)
+
+  orderHistory.forEach((order, i) => {
+    $('.order-display').append(`
+        <article class='order'>
+          <p class='order-title'>Order #${i}</p>
+          <p class='order-date'>Order Date: ${order.created_at.slice(0, 10)}</p>
+          <p class='order-total'>Total Price: ${order['total_price']}</p>
+        </article
+      `)
+  })
 }
 
 const display = () => {

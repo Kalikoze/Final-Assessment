@@ -111,7 +111,7 @@ button:hover {
   width: 80%;
 }
 
-.cart-display {
+.cart-display, .order-display {
   border: 1px solid #000;
   display: flex;
   flex-wrap: wrap;
@@ -137,7 +137,7 @@ button:hover {
   width: 60%;
 }
 
-.shopping-items {
+.shopping-items, .order {
   display: flex;
   flex-wrap: wrap;
   height: auto;
@@ -153,6 +153,11 @@ button:hover {
   display: flex;
   justify-content: center;
   width: 50%;
+}
+
+.order p {
+  display: flex;
+  width: 100%;
 }
 
 .shopping-total {
