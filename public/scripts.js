@@ -127,6 +127,7 @@ const postTotal = e => {
     })
     .then(response => response.json())
     .then(order => (cartClick(), localStorage.clear()))
+    .catch(error => console.log({ error }))
   }
 }
 
