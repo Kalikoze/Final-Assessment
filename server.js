@@ -16,9 +16,7 @@ app.use(bodyParser.json());
 app.set('port', process.env.PORT || 3001);
 
 app.listen(app.get('port'), () => {
-	/* eslint-disable no-alert, no-console */
 	console.log(`Amazon Bay is running on ${app.get('port')}.`);
-	/* eslint-enable no-alert, no-console */
 });
 
 module.exports = app;
