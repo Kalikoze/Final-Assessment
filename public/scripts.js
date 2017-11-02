@@ -36,6 +36,9 @@ const displayCart = () => {
 }
 
 const appendCart = () => {
+  const storedItems = JSON.parse(localStorage.getItem('shoppingItems')) || [];
+
+
   $('.cart').after(`
     <section class="append-display">
       <p>Cart Display</p>
@@ -61,6 +64,15 @@ const display = () => {
   $('.append-display').remove();
 }
 
+const saveItem = e => {
+  const storedItems = JSON.parse(localStorage.getItem('shoppingItems')) || [];
+  const title = $(e.target).closest('.item').find('h3').text();
+  const price = $(e.target).closest('.item').find('.price').text();
+  storedItems.push({title, price})
+  localStorage.setItem('shoppingItems', JSON.stringify(storedItems))
+}
+
 $(document).ready(fetchInventory);
 $('.cart').click(cartClick);
-$('.order-history').click(orderClick)
+$('.order-history').click(orderClick);
+$('.inventory').click('button', saveItem)
