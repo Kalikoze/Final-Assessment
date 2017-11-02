@@ -96,7 +96,7 @@ const appendOrder = (orderHistory) => {
         <article class='order'>
           <p class='order-title'>Order #${i}</p>
           <p class='order-date'>Order Date: ${order.created_at.slice(0, 10)}</p>
-          <p class='order-total'>Total Price: ${order['total_price']}</p>
+          <p class='order-total'>Total Price: $${order['total_price']}</p>
         </article
       `)
   })
