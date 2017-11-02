@@ -14,7 +14,7 @@ body {
 
 header {
   align-items: center;
-  background-color: purple;
+  background-color: #000;
   color: #FFF;
   display: flex;
   font-size: 32px;
@@ -155,9 +155,17 @@ button:hover {
   width: 50%;
 }
 
+.order {
+  align-items: space-around;
+  justify-content: space-around;
+}
+
 .order p {
   display: flex;
-  width: 100%;
+}
+
+.order-title {
+  font-weight: bold;
 }
 
 .shopping-total {
