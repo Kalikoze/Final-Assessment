@@ -2,10 +2,15 @@ const appendInventory = (inventory) => {
   inventory.forEach(item => {
     $('.inventory').append(`
         <article class='item'>
-        <h3>${item.title}</h3>
-        <p class='description'>
-        Description: ${item['item_description']}
-        </p>
+        <section class='item-info'>
+          <h3>${item.title}</h3>
+          <p class='description'>
+          Description: ${item['item_description']}
+          </p>
+        </section>
+        <img src='${item['img_url']}'/>
+        <p class='price'>${item.price}</p>
+        <button>Add To Cart</button>
         <article>
       `)
   })
