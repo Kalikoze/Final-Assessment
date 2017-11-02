@@ -4,7 +4,66 @@
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  margin: 0;
+  width: 100%;
+}
+
+header {
+  align-items: center;
+  background-color: purple;
+  color: #FFF;
+  display: flex;
+  font-size: 32px;
+  height: 10%;
+  justify-content: center;
+  width: 100%;
+}
+
+.order-history, .cart {
+  border: 2px outset #D1D2D3;
+  height: 90%;
+  width: 10%;
+}
+
+.order-history {
+  border-left: none;
+}
+
+.cart {
+  border-right: none;
+}
+
+.inventory {
+  display: flex;
+  flex-wrap: wrap;
+  height: 90%;
+  overflow-y: scroll;
+  padding: 50px;
+  width: 80%;
+}
+
+.item {
+  border-bottom: 2px solid #F2F2F2;
+  display: flex;
+  height: 40vh;
+  width: 100%;
+}
+
 img {
-  width: 300px;
-  height: 300px;
+  height: 100%;
+  object-fit: contain;
+  width: 50%;
+}
+
+.item-info {
+  height: 100%;
+  width: 50%;
+}
+
+h3 {
+
 }
