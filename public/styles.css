@@ -110,3 +110,58 @@ button:hover {
   flex-wrap: wrap;
   width: 80%;
 }
+
+.cart-display {
+  border: 1px solid #000;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 50vh;
+  overflow-y: scroll;
+  padding: 20px;
+  width: 80%;
+}
+
+.cart-display h2, .item-column {
+  align-items: center;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  width: 100%;
+}
+
+.item-column {
+  font-size: 24px;
+  font-weight: bold;
+  justify-content: flex-start;
+  width: 60%;
+}
+
+.shopping-items {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  width: 100%;
+}
+
+.shopping-item {
+  display: flex;
+  width: 100%;
+}
+
+.shopping-item p {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.shopping-total {
+  display: flex;
+  font-weight: bold;
+  width: 100%;
+}
+
+.purchase {
+  height: 50px;
+  width: 100%;
+}
