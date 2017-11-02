@@ -8,7 +8,7 @@ const appendInventory = (inventory) => {
           <p class='description'>
           Description: ${item['item_description']}
           </p>
-          <p class='price'>${item.price}</p>
+          <p class='price'>Price: $${item.price}</p>
           <button>Add To Cart</button>
         </section>
         </article>
