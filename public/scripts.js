@@ -39,11 +39,14 @@ const appendCart = () => {
   const storedItems = JSON.parse(localStorage.getItem('shoppingItems')) || [];
   $('.cart').after(`
     <section class="append-display">
-      <h2>Shopping Cart</h2>
-      <p class='item-column'>Items</p>
-      <section class='shopping-items'>
+      <section class="cart-display">
+        <h2>Shopping Cart</h2>
+        <p class='item-column'>Items</p>
+        <section class='shopping-items'>
+        </section>
+        <p class='shopping-total'></p>
+        <button class='purchase'>Complete Purchase</button>
       </section>
-      <p class='shopping-total'></p>
     </section>
      `)
 
