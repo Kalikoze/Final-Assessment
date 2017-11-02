@@ -5,12 +5,12 @@ exports.up = (knex, Promise) => {
       table.string('title');
       table.string('item_description');
       table.string('img_url');
-      table.decimal('price');
+      table.integer('price');
       table.timestamps(true, true);
     }),
     knex.schema.createTable('order_history', table => {
       table.increments('id').primary();
-      table.decimal('total_price');
+      table.integer('total_price');
       table.timestamps(true, true)
     })
   ])
