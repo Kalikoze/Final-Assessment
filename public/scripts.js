@@ -8,7 +8,7 @@ const appendInventory = (inventory) => {
           <p class='description'>
           Description: ${item['item_description']}
           </p>
-          <p class='price'>Price: $${item.price}</p>
+          <p class='price'>Price: $<span>${item.price}</span></p>
           <button>Add To Cart</button>
         </section>
         </article>
@@ -37,13 +37,33 @@ const displayCart = () => {
 
 const appendCart = () => {
   const storedItems = JSON.parse(localStorage.getItem('shoppingItems')) || [];
-
-
   $('.cart').after(`
     <section class="append-display">
-      <p>Cart Display</p>
+      <h2>Shopping Cart</h2>
+      <p class='item-column'>Items</p>
+      <section class='shopping-items'>
+      </section>
+      <p class='shopping-total'></p>
     </section>
      `)
+
+    displayShoppingCart(storedItems)
+}
+
+const displayShoppingCart = (storedItems) => {
+  let total = 0;
+
+  storedItems.forEach(item => {
+    $('.shopping-items').append(`
+      <section class='shopping-item'>
+        <p>${item.title}</p>
+        <p class='shopping-price'>Price: $<span>${item.price}</span></p>
+      </section>
+      `)
+  });
+
+  $('.shopping-price span').each((i, price) => total += JSON.parse($(price).text()));
+  $('.shopping-total').append(`Total: ${total}`)
 }
 
 const displayOrder = () => {
@@ -67,7 +87,7 @@ const display = () => {
 const saveItem = e => {
   const storedItems = JSON.parse(localStorage.getItem('shoppingItems')) || [];
   const title = $(e.target).closest('.item').find('h3').text();
-  const price = $(e.target).closest('.item').find('.price').text();
+  const price = $(e.target).closest('.item').find('.price span').text();
   storedItems.push({title, price})
   localStorage.setItem('shoppingItems', JSON.stringify(storedItems))
 }
