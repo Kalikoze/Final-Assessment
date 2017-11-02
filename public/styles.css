@@ -102,3 +102,8 @@ button:hover {
   background-color: #000;
   color: #FFF;
 }
+
+.append-display {
+  display: flex;
+  width: 80%;
+}
