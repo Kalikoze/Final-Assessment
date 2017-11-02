@@ -36,13 +36,13 @@ describe('API Routes', () => {
   before(done => {
     db.migrate.latest()
     .then(() => done())
-    .catch(error => console.log(error))
+    .catch(error => error)
   })
 
   beforeEach((done) => {
     db.seed.run()
       .then(() => done())
-      .catch(error => console.log(error));
+      .catch(error => error);
   });
 
   describe('GET /api/v1/inventory', () => {
@@ -108,6 +108,31 @@ describe('API Routes', () => {
         .end((error, response) => {
           response.should.have.status(404);
           done()
+        })
+    })
+  })
+
+  describe('POST /api/v1/order_history', () => {
+    it('should post a new order', done => {
+      chai.request(server)
+        .post('/api/v1/order_history')
+        .send({total_price: 251})
+        .end((error, response) => {
+          response.should.have.status(201);
+          response.body.should.be.a('array');
+          response.body[0]['total_price'].should.equal(251);
+          done();
+        })
+    })
+
+    it('should not create a order with missing data', done => {
+      chai.request(server)
+        .post('/api/v1/order_history')
+        .send({})
+        .end((error, response) => {
+          response.should.have.status(422);
+          response.body.error.should.equal("Expected format: {'total_price': <integer>}.  You are missing a total_price property.");
+          done();
         })
     })
   })
