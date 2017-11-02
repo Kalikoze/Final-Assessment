@@ -36,7 +36,7 @@ app.post('/api/v1/order_history', (request, response) => {
 
   if (!order['total_price']) {
     return response.status(422).send({
-      error: `Expected format: {'total_price': <decimal>}.  You are missing a ${requiredParameter} property.`
+      error: `Expected format: {'total_price': <integer>}.  You are missing a total_price property.`
     });
   };
 
